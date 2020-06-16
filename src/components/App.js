@@ -9,8 +9,12 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('PROPS', this.props);
-    return <div>App</div>;
+    const {posts} = this.props;
+    return ( 
+    <div>
+      <PostsList />
+    </div>
+    );
   }
 }
 
