@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchPosts } from '../actions/posts';
-
+import { PostsList } from './';
 class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchPosts());
@@ -12,7 +12,7 @@ class App extends React.Component {
     const {posts} = this.props;
     return ( 
     <div>
-      <PostsList />
+      <PostsList posts={posts}/>
     </div>
     );
   }
