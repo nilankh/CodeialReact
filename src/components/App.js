@@ -5,6 +5,17 @@ import PropTypes from 'prop-types';
 
 import { fetchPosts } from '../actions/posts';
 import { PostsList, Navbar } from './';
+
+const login = () => (
+  <div>Login </div>
+);
+const Signup = () => (
+  <div>Sign Up </div>
+);
+const Home = () => (
+  <div>Home </div>
+);
+
 class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchPosts());
@@ -13,10 +24,27 @@ class App extends React.Component {
   render() {
     const {posts} = this.props;
     return ( 
-    <div>
-      <Navbar />
-      <PostsList posts={posts}/>
-    </div>
+      <Router>
+        <div>
+          <Navbar />
+          {/* <PostsList posts={posts}/> */}
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/signup">Signup</Link>
+            </li>
+          </ul>
+
+          <Route exact path="/" component={Home}/>
+          <Route path="/login" component={login}/>
+          <Route path="/signup" component={Signup}/>
+        </div>
+    </Router>
     );
   }
 }
