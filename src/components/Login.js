@@ -6,6 +6,11 @@ class Login extends Component {
         this.emailInputRef = React.createRef();
         this.passwordInputRef = React.createRef();
     }
+    handleFormSubmit = (e) => {
+        e.preventDefault();
+        console.log('this.emailInputRef', this.emailInputRef)
+        console.log('this.passwordInputRef', this.passwordInputRef)
+    }
     render() {
         return (
             <form className="login-form">
@@ -17,7 +22,7 @@ class Login extends Component {
                 <input type="Password" placeholder="Password" required ref={this.passwordInputRef}/>
                 </div>
                 <div className="field">
-                    <button>Log In</button>
+                    <button onClick={this.handleFormSubmit}>Log In</button>
                 </div>
             </form>
         );
