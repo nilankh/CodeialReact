@@ -10,6 +10,7 @@ export function startLogin() {
 
 export function login(email, password) {
     return (dispatch) => {
+        dispatch(startLogin());
         const url = APIUrls.login();
         fetch(url, {
             method: 'POST',
@@ -18,6 +19,11 @@ export function login(email, password) {
 
             },
             body: getFormBody({ email, password }),
+        })
+        .then(response => response.json())
+        .then((data)=> {
+            console.log('data', data);
         });
+
     }
 }
