@@ -9,6 +9,7 @@ import {
     SIGNUP_SUCCESS,
     CLEAR_AUTH_STATE,
     EDIT_USER_SUCCESSFUL,
+    EDIT_USER_FAILED,
   } from './actionTypes';
 import { APIUrls } from '../helpers/urls';
 import { getFormBody } from '../helpers/utils';
@@ -131,4 +132,24 @@ export function editUserSuccessful(user) {
     type: EDIT_USER_SUCCESSFUL,
     user,
   };
+}
+
+export function editUserFailed(error) {
+  return {
+    type: EDIT_USER_FAILED,
+    error,
+  };
+}
+
+export function editUser(name, password, confirmPassword, userId) {
+  return (dispatch) => {
+    const url = APIUrls.editProfile();
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    })
+  }
 }
