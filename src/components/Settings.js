@@ -38,7 +38,7 @@ class Settings extends Component {
                 </div>
 
                 {error && <div className="alert error-dailog">{error}</div>}
-                {error === false && <div className="alert success-dailog">Successfully Updated Profile</div>}
+                {error === false && <div className="alert success-dailog">Successfully Updated Profile!</div>}
                 <div className="field">
                     <div className="field-label">Email</div>
                     <div className="field-value">{user.email}</div>
