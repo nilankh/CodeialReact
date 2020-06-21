@@ -8,6 +8,7 @@ import {
     SIGNUP_FAILED,
     SIGNUP_SUCCESS,
     CLEAR_AUTH_STATE,
+    EDIT_USER_SUCCESSFUL,
   } from './actionTypes';
 import { APIUrls } from '../helpers/urls';
 import { getFormBody } from '../helpers/utils';
@@ -122,5 +123,12 @@ export function authenticateUser(user) {
 export function clearAuthState () {
   return {
     type: CLEAR_AUTH_STATE,
+  };
+}
+
+export function editUserSuccessful(user) {
+  return {
+    type: EDIT_USER_SUCCESSFUL,
+    user,
   };
 }
