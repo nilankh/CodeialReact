@@ -64,12 +64,12 @@ import {
         return {
           ...state,
           user: action.user,
-          error: false
+          error: false,
         }
       case EDIT_USER_FAILED:
         return {
           ...state,
-          error: action.error
+          error: action.error,
         }
       default:
         return state;
