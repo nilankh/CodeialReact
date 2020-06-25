@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import PropTypes from 'prop-types';
 
 import { fetchPosts } from '../actions/posts';
-import { Home, Navbar, Page404, Login, Signup, Settings} from './';
+import { Home, Navbar, Page404, Login, Signup, Settings, UserProfile} from './';
 import * as jwtDecode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
 import { getAuthTokenFromLocalStorage } from '../helpers/utils';
@@ -65,6 +65,8 @@ class App extends React.Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <PrivateRoute path="/settings" component={Settings} isLoggedin={auth.isLoggedin} />
+            <PrivateRoute path="/user" component={UserProfile} isLoggedin={auth.isLoggedin} />
+            
             <Route component={Page404} />
           </Switch>
         </div>
