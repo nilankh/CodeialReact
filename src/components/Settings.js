@@ -27,7 +27,7 @@ class Settings extends Component {
     };
 
     componentWillUnmount() {
-        this.props.dispatch(clearAuthState());git 
+        this.props.dispatch(clearAuthState());
     }
 
     render() {
