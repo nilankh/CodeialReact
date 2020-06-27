@@ -14,6 +14,7 @@ import {
   Settings, 
   UserProfile
 } from './';
+
 import * as jwtDecode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
 import { getAuthTokenFromLocalStorage } from '../helpers/utils';
