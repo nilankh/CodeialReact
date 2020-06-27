@@ -36,5 +36,9 @@ export function fetchUserProfile (userId) {
                 'Authorization': `Bearer ${getAuthTokenFromLocalStorage()}`
               },
         })
-    }
+        .then(response => response.json())
+        .then((data) => {
+            dispatch(data.data.user);
+        })
+    };
 }
