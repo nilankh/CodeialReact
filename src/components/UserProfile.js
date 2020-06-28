@@ -4,6 +4,13 @@ import { connect } from 'react-redux';
 
 
 class UserProfile extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            success: null,
+            error: null,
+        };
+    }
     componentDidMount() {
       const { match } = this.props;
   
@@ -25,6 +32,7 @@ class UserProfile extends Component {
         }
         return false;
     };
+
     render() {
         const {
           match: { params }, 
@@ -59,8 +67,14 @@ class UserProfile extends Component {
                 </div>
 
                 <div className="btn-grp">
-                    {!isUserAFriend ? <button className="button save-btn">Add Friend</button> : <button className="button save-btn">Remove Friend</button>}
-                    
+                    {!isUserAFriend ? (
+                        <button className="button save-btn">Add Friend</button>
+                     ) : (
+                        <button className="button save-btn">Remove Friend</button>
+                     )}
+
+                    {success && <div className="alert success-dailog"> Friend added successfully </div>}
+                    {error && <div className="alert success-dailog"> Friend added successfully </div>}
                 </div>
             </div>
         );
