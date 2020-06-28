@@ -18,7 +18,12 @@ class UserProfile extends Component {
         const { match, friends } = this.props;
         const userId = match.params.userId;
 
-        const index = 
+        const index = friends.map(friend => friend.to_user._id).indexOf(userId);
+        
+        if(index !== -1 ) { 
+            return true; 
+        }
+        return false;
     };
     render() {
         const {
@@ -54,7 +59,8 @@ class UserProfile extends Component {
                 </div>
 
                 <div className="btn-grp">
-                    <button className="button save-btn">Add Friend</button>
+                    {!isUserAFriend ? <button className="button save-btn">Add Friend</button> : <button className="button save-btn">Remove Friend</button>}
+                    
                 </div>
             </div>
         );
