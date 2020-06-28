@@ -99,7 +99,11 @@ class UserProfile extends Component {
 
                 <div className="btn-grp">
                     {!isUserAFriend ? (
-                        <button className="button save-btn" onClick={this.handleAddFriendClick}>Add Friend</button>
+                        <button 
+                            className="button save-btn" 
+                            onClick={this.handleAddFriendClick}>
+                            Add Friend
+                        </button>
                      ) : (
                         <button className="button save-btn">Remove Friend</button>
                      )}
