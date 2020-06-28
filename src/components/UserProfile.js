@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { fetchUserProfile } from '../actions/profile';
 import { connect } from 'react-redux';
+import { APIUrls } from '../helpers/urls';
+import { getAuthTokenFromLocalStorage } from '../helpers/utils';
 
 
 class UserProfile extends Component {
@@ -32,6 +34,20 @@ class UserProfile extends Component {
         }
         return false;
     };
+
+    handleAddFriendClick = () => {
+        const userId = this.props.match.params.userId
+        const url = APIUrls.addFriend(userId);
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': `Bearer ${getAuthTokenFromLocalStorage()}`
+            },
+        }
+
+    }
 
     render() {
         const {
