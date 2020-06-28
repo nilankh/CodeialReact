@@ -45,7 +45,7 @@ class UserProfile extends Component {
             return  <h1>Loading</h1>;
         }
         const isUserAFriend = this.checkIfUserIsAFriend();
-
+        const { success, error } = this.state;
 
         return (
             <div className="settings">
@@ -68,13 +68,13 @@ class UserProfile extends Component {
 
                 <div className="btn-grp">
                     {!isUserAFriend ? (
-                        <button className="button save-btn">Add Friend</button>
+                        <button className="button save-btn" onClick={this.handleAddFriendClick}>Add Friend</button>
                      ) : (
                         <button className="button save-btn">Remove Friend</button>
                      )}
 
                     {success && <div className="alert success-dailog"> Friend added successfully </div>}
-                    {error && <div className="alert success-dailog"> Friend added successfully </div>}
+                    {error && <div className="alert error-dailog">{error} </div>}
                 </div>
             </div>
         );
