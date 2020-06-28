@@ -11,6 +11,7 @@ class UserProfile extends Component {
         this.state = {
             success: null,
             error: null,
+            successMessage: null,
         };
     }
     componentDidMount() {
@@ -51,7 +52,8 @@ class UserProfile extends Component {
 
         if(data.success) {
             this.setState({
-                success: true
+                success: true,
+                successMessage: 'Added Friend Successfully!',
             });
 
             this.props.dispatch(addFriend(data.data.friendship));
@@ -62,6 +64,21 @@ class UserProfile extends Component {
                 error: data.message
             })
         }
+    }
+
+    handleRemoveFriendClick = async () => {
+        const { match } = this.props;
+        const url = APIUrls.removeFriend(match.params.userId);
+
+        const extra = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': `Bearer ${getAuthTokenFromLocalStorage()}`
+            },
+        };
+        const response = await fetch(url, extra);
+        const 
     }
 
     render() {
@@ -105,7 +122,12 @@ class UserProfile extends Component {
                             Add Friend
                         </button>
                      ) : (
-                        <button className="button save-btn">Remove Friend</button>
+                        <button 
+                            className="button save-btn"
+                            onClick={this.handleRemoveFriendClick}
+                        >
+                            Remove Friend
+                        </button>
                      )}
 
                     {success && (
