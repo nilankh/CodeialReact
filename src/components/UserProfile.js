@@ -3,7 +3,7 @@ import { fetchUserProfile } from '../actions/profile';
 import { connect } from 'react-redux';
 import { APIUrls } from '../helpers/urls';
 import { getAuthTokenFromLocalStorage } from '../helpers/utils';
-
+import { addFriend } from '../actions/friends';
 
 class UserProfile extends Component {
     constructor(props) {
@@ -35,7 +35,7 @@ class UserProfile extends Component {
         return false;
     };
 
-    handleAddFriendClick = () => {
+    handleAddFriendClick = async () => {
         const userId = this.props.match.params.userId
         const url = APIUrls.addFriend(userId);
 
@@ -45,8 +45,23 @@ class UserProfile extends Component {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Authorization': `Bearer ${getAuthTokenFromLocalStorage()}`
             },
-        }
+        };
+        const response = await fetch(url, options);
+        const data = await response.json();
 
+        if(data.success) {
+            this.setState({
+                success: true
+            });
+
+            this.props.dispatch(addFriend(data.data.friendship));
+
+        }else {
+            this.setState({
+                success: null,
+                error: data.message
+            })
+        }
     }
 
     render() {
@@ -89,7 +104,10 @@ class UserProfile extends Component {
                         <button className="button save-btn">Remove Friend</button>
                      )}
 
-                    {success && <div className="alert success-dailog"> Friend added successfully </div>}
+                    {success && (
+                        <div className="alert success-dailog"> 
+                            Friend added successfully </div>
+                    )}
                     {error && <div className="alert error-dailog">{error} </div>}
                 </div>
             </div>
