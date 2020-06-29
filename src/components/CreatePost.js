@@ -10,6 +10,7 @@ class CreatePost extends Component {
 
   handleOnClick = () => {
     // dispatch action
+    // this.props.dispatch(createPost(this.state.content));
   };
 
   handleChange = (e) => {
