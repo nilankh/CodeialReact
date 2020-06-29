@@ -1,4 +1,4 @@
-import { UPDATE_POSTS, ADD_POST } from './actionTypes';
+import { UPDATE_POSTS, ADD_POST, ADD_COMMENT } from './actionTypes';
 import { APIUrls } from '../helpers/urls';
 import { getAuthTokenFromLocalStorage, getFormBody } from '../helpers/utils';
 
