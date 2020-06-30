@@ -55,13 +55,13 @@ class Post extends Component {
           <div className="post-content">{post.content}</div>
 
           <div className="post-actions">
-            <div className="post-like">
+            <button className="post-like no-btn" onClick= {this.handlePostLike}>
               <img
                 src="https://image.flaticon.com/icons/svg/1077/1077035.svg"
                 alt="likes-icon"
               />
               <span>{post.likes.length}</span>
-            </div>
+            </button>
 
             <div className="post-comments-icon">
               <img
