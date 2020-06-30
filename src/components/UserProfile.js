@@ -28,10 +28,10 @@ class UserProfile extends Component {
             match: { params: prevParams },
         } = prevProps;
         const {
-            match: { params },
+            match: { params: currentParams },
         } = this.props;
-        if(prevParams && params && prevParams.userId !== params.userId) {
-            this.props.dispatch(fetchUserProfile(params.userId));
+        if(prevParams && currentParams && prevParams.userId !== currentParams.userId) {
+            this.props.dispatch(fetchUserProfile(currentParams.userId));
         }
     }
     checkIfUserIsAFriend = () => {
