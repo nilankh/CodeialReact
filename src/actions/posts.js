@@ -82,3 +82,9 @@ export function addComment(comment, postId) {
     postId,
   };
 }
+
+export function addLikeToStore (id, likeType, userId) {
+  return (dispatch) => {
+    const url = APIUrls.toggleLike();
+  }
+}
